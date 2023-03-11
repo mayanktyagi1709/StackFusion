@@ -9,44 +9,40 @@ const Form = () => {
   const [dob, setDob] = useState("");
   const [dobError, setDobError] = useState("");
   const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // // Name Verification
-    // if (name.length < 2 || !isNaN(name))
-    //   setNameError("Please Enter a Valid Name");
-    // else setNameError("");
+    // Name Verification
+    if (name.length < 2 || !isNaN(name))
+      setNameError("Please Enter a Valid Name");
+    else setNameError("");
 
-    // //Email Verification
-    // if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
-    //   setEmailError("Please Enter a Valid Email");
-    // else setNameError("");
+    //Email Verification
+    if (email.indexOf("@") === -1 || email.indexOf(".") === -1)
+      setEmailError("Please Enter a Valid Email");
+    else setEmailError("");
 
-    // //DOB Verification
+    //DOB Verification
 
-    // const dobDate = new Date(dob);
-    // const today = new Date();
-    // const age = today.getFullYear() - dobDate.getFullYear();
+    const dobDate = new Date(dob);
+    const today = new Date();
+    const age = today.getFullYear() - dobDate.getFullYear();
 
-    // if (age < 18)
-    //   setNameError("User must be above 18");
-    // else setNameError("");
-
-    // //Phone number verification  };
-  }
+    if (age < 18) setDobError("User must be above 18");
+    else setDobError("");
+  };
 
   return (
     <div className="flex justify-center">
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/5"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="username"
+            htmlFor="username"
           >
             Name
           </label>
@@ -60,16 +56,19 @@ const Form = () => {
               setName(e.target.value);
             }}
           />
+          {nameError && (
+            <p className="text-red-500 text-xs italic">{nameError}</p>
+          )}
         </div>
         <div className="mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="Email"
+            htmlFor="Email"
           >
             Email
           </label>
           <input
-            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="Email"
             type="Email"
             placeholder="Email"
@@ -78,16 +77,14 @@ const Form = () => {
               setEmail(e.target.value);
             }}
           />
-          {
-            <p className="text-red-500 text-xs italic">
-              Please choose a password.
-            </p>
-          }
+          {emailError && (
+            <p className="text-red-500 text-xs italic">{emailError}</p>
+          )}
         </div>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="username"
+            htmlFor="username"
           >
             DOB
           </label>
@@ -101,11 +98,14 @@ const Form = () => {
               setDob(e.target.value);
             }}
           />
+          {dobError && (
+            <p className="text-red-500 text-xs italic">{dobError}</p>
+          )}
         </div>
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="username"
+            htmlFor="username"
           >
             Phone Number
           </label>
@@ -121,12 +121,10 @@ const Form = () => {
           />
         </div>
         <div className="flex items-center justify-between">
-          <button
+          <input
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-          >
-            Submit
-          </button>
+            type="submit"
+          />
         </div>
       </form>
     </div>
