@@ -35,7 +35,7 @@ const Form = ({setSubmitted}) => {
 
     if (!nameError && !emailError && !dobError) {
       try {
-        const res = await fetch("http://localhost:8800/api/user/", {
+        const res = await fetch("https://stack-fusion-mayanktyagi1709.vercel.app/api/user/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
