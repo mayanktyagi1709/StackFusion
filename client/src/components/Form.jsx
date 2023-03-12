@@ -35,7 +35,7 @@ const Form = ({setSubmitted}) => {
 
     if (!nameError && !emailError && !dobError) {
       try {
-        const res = await fetch("https://stack-fusion-1.vercel.app/api/user/", {
+        const res = await fetch("https://stack-fusion-three.vercel.app/api/user/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
