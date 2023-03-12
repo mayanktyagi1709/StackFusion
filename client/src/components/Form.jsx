@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UserForms from "./UserForms";
 
-const Form = () => {
+const Form = ({setSubmitted}) => {
 
   const navigate = useNavigate();
   const [name, setName] = useState("");

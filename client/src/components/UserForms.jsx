@@ -18,14 +18,16 @@ const Forms = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Submitted Forms</h1>
+    <div className="flex flex-col justify-center mx-4">
+      <h1 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Submitted Forms</h1>
       <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Message</th>
+            <th>DOB</th>
+            <th>Phone Number</th>
+
           </tr>
         </thead>
         <tbody>
@@ -33,7 +35,8 @@ const Forms = () => {
             <tr key={form._id}>
               <td>{form.name}</td>
               <td>{form.email}</td>
-              <td>{form.message}</td>
+              <td>{form.dob}</td>
+              <td>{form.phone}</td>
             </tr>
           ))}
         </tbody>
