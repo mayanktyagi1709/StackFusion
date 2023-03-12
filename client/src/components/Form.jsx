@@ -161,7 +161,7 @@ const Form = ({setSubmitted}) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
 export default Form;

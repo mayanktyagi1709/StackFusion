@@ -7,7 +7,7 @@ const Forms = () => {
     const fetchForms = async () => {
       try {
         const response = await fetch('http://localhost:8800/api/user'); 
-        const data = await response.json();// replace with your API endpoint
+        const data = await response.json();
         setForms(data);
       } catch (error) {
         console.error(error);
