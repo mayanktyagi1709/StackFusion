@@ -1,7 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import UserForms from "./UserForms";
 
 const Form = () => {
+
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
   const [email, setEmail] = useState("");
@@ -10,7 +14,7 @@ const Form = () => {
   const [dobError, setDobError] = useState("");
   const [phone, setPhone] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Name Verification
@@ -24,13 +28,43 @@ const Form = () => {
     else setEmailError("");
 
     //DOB Verification
-
     const dobDate = new Date(dob);
     const today = new Date();
     const age = today.getFullYear() - dobDate.getFullYear();
-
     if (age < 18) setDobError("User must be above 18");
     else setDobError("");
+
+    if (!nameError && !emailError && !dobError) {
+      try {
+        const res = await fetch("http://localhost:8800/api/user/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            dob,
+            phone,
+          }),
+        });
+
+        if (res.ok) {
+          setName("");
+          setEmail("");
+          setDob("");
+          setPhone("");
+          alert("Form submitted successfully!");
+          setSubmitted(true);
+          navigate('/submitted-forms');
+        } else {
+          const error = await res.json();
+          alert(`Error: ${error.message}`);
+        }
+      } catch (err) {
+        alert(`Error: ${err.message}`);
+      }
+    }
   };
 
   return (
