@@ -7,7 +7,7 @@ const cors = require('cors');
 
 
 const app = express();
-const PORT = 8800;
+const PORT = process.env.PORT || 8800;
 dotenv.config();
 
 mongoose.set("strictQuery", false);
