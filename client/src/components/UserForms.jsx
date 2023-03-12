@@ -6,7 +6,7 @@ const Forms = () => {
   useEffect(() => {
     const fetchForms = async () => {
       try {
-        const response = await fetch('https://stack-fusion-three.vercel.app/api/user'); 
+        const response = await fetch('https://stack-fusion-6iis7rhzp-mayanktyagi1709.vercel.app/api/user'); 
         const data = await response.json();
         setForms(data);
       } catch (error) {
