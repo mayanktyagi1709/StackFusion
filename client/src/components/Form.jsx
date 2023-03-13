@@ -41,7 +41,7 @@ const Form = ({setSubmitted}) => {
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Origin": "*"
+            "Origin": "https://stack-fusion-mayanktyagi1709.vercel.app"
           },
           body: JSON.stringify({
             name,
