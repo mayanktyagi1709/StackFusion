@@ -36,9 +36,12 @@ const Form = ({setSubmitted}) => {
     if (!nameError && !emailError && !dobError) {
       try {
         const res = await fetch("https://stack-fusion-mayanktyagi1709.vercel.app/api/user/", {
+          mode: "cors",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Origin": "*"
           },
           body: JSON.stringify({
             name,
