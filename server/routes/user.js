@@ -7,6 +7,12 @@ const router = express.Router();
 router.get('/', async(req, res) =>{
     try{
         const forms = await User.find();
+        //Preflight CORS handler
+    if(req.method === 'OPTIONS') {
+        return res.status(200).json(({
+            body: "OK"
+        }))
+    }
         res.status(200).send(forms);
     }
     catch(err){
@@ -19,6 +25,13 @@ router.post('/', async(req, res)=>{
     const form = new User(req.body);
     try{
         const savedForm = await form.save();
+
+        if(req.method === 'OPTIONS') {
+            return res.status(200).json(({
+                body: "OK"
+            }))
+        }    
+
         res.status(200).send(savedForm);
     }catch(err){
         res.status(400).send(err);
